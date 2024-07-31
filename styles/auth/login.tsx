@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: wp('5%'),
+        backgroundColor:'#fff',
       },
       heading: {
         fontSize: wp('7%'),

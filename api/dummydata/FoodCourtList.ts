@@ -2,7 +2,7 @@
 export const foodCourt = [
     {
       id:1,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Gourmet Plaza',
       distance: '1.2 km',
       location: 'Downtown',
@@ -12,7 +12,7 @@ export const foodCourt = [
     },
     {
       id:2,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Budget Bites',
       distance: '0.8 km',
       location: 'Market Street',
@@ -22,7 +22,7 @@ export const foodCourt = [
     },
     {
       id:3,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Family Feast',
       distance: '2.0 km',
       location: 'Suburb Area',
@@ -32,7 +32,7 @@ export const foodCourt = [
     },
     {
       id:4,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Veggie Delight',
       distance: '1.5 km',
       location: 'Main Avenue',
@@ -42,7 +42,7 @@ export const foodCourt = [
     },
     {
       id:5,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Quick Eats',
       distance: '0.5 km',
       location: 'Business District',
@@ -52,7 +52,7 @@ export const foodCourt = [
     },
     {
       id:6,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Seafood Haven',
       distance: '3.0 km',
       location: 'Coastal Road',
@@ -62,7 +62,7 @@ export const foodCourt = [
     },
     {
       id:7,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Sweet Treats',
       distance: '1.8 km',
       location: 'Old Town',
@@ -72,7 +72,7 @@ export const foodCourt = [
     },
     {
       id:8,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Healthy Haven',
       distance: '2.5 km',
       location: 'Eco Park',
@@ -82,7 +82,7 @@ export const foodCourt = [
     },
     {
       id:9,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Night Bazaar',
       distance: '2.2 km',
       location: 'City Center',
@@ -92,7 +92,7 @@ export const foodCourt = [
     },
     {
       id:10,
-      image: '@/assets/images/foodcourt1.jpeg',
+      image: require('@/assets/images/foodcourt1.jpeg'),
       name: 'Spice Route',
       distance: '0.9 km',
       location: 'Cultural District',

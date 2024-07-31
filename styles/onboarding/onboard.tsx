@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     firstContainer:{
         alignItems:"center",
         flex:1,
-        justifyContent:"center"
+        justifyContent:"center",
+        backgroundColor:'#fff',
     },
     image: {
         width: wp('60%'),

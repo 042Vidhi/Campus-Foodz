@@ -20,13 +20,13 @@ export default function _layout() {
                 
               }}
             />
-            <Tabs.Screen name="suggestionbox"
+            {/* <Tabs.Screen name="suggestionbox"
                options={{
                 title:"Suggestion Box",
                 tabBarIcon:({color})=><Ionicons name='chatbubbles' size={28} color={color}/>
 
               }}
-            />
+            /> */}
         </Tabs>
     
   )
