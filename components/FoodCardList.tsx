@@ -31,7 +31,7 @@ const FoodCardList: React.FC<FoodCardListProps> = ({ data }) => {
           style={styles.card}
           onPress={() => router.push({
             pathname: `/FoodCourtMenu/${item.id}`,
-            params: { menu: JSON.stringify(item) } // Passing the item as a stringified JSON
+            params: item 
           })}
         >
           <Image source={item.image || require('@/assets/images/foodcourt1.jpeg')} style={styles.image} />

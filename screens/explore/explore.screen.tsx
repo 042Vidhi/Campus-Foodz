@@ -14,7 +14,7 @@ export default function ExploreScreen() {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.heading}>Explore</Text>
+      <Text style={styles.heading}>Explore</Text>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <FoodCardList data={filteredFoodCourts} />
     </View>
@@ -28,9 +28,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         paddingLeft:20,
         paddingVertical: 10,
-        backgroundColor: '#fff',
-      
-       
+        backgroundColor: '#fff', 
     },
   container: {
     flex: 1,

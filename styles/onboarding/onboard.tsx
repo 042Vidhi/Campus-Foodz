@@ -20,8 +20,10 @@ export const styles = StyleSheet.create({
     heading1:{
         fontSize:20,
         fontWeight:"100",
+        textAlign:'center',
     },
     heading2:{
+        fontSize:20,
         fontWeight: 'bold',
         color:"#1A3636"
     },

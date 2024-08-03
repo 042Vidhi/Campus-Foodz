@@ -9,9 +9,10 @@ export default function OnboardingScreen() {
   return (
     
       <View style={styles.firstContainer}>
+          <Text style={styles.heading1}>Welcome To JUIT</Text>
+          <Text style={styles.heading1}>Campus Foodz</Text>
+          {/* <Text style={styles.heading2}>JUIT</Text> */}
           <Image source={require('@/assets/images/onboard_food.png')} style={styles.image} />
-          <Text style={styles.heading1}>Welcome To JUIT Campus Foodz</Text>
-          <Text style={styles.heading2}>JUIT</Text>
           <TouchableOpacity style={styles.buttonContainer} onPress={()=>router.push("/(tabs)/home")}>
             <Text style={styles.buttonText}>Get Started</Text>
           </TouchableOpacity>
