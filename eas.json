@@ -21,7 +21,16 @@
       "channel": "preview4"
     },
     "production": {
-      "channel": "production"
+      "channel": "production",
+      "env": {
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyB7j240fVelPWdlQ5axXIhFF9-KBi-odiQ",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "campus-foodz.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "campus-foodz",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "campus-foodz.appspot.com",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "403397435299",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:403397435299:web:6b63ce04d6cddddf58c416",
+        "EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID": "G-NF2NMTHH58"
+      }
     }
   }
 }
