@@ -22,7 +22,10 @@
         "backgroundColor": "#ffffff"
       },
       "package": "dev.expo.campusfoodz",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "INTERNET"  
+      ]
     },
     "web": {
       "bundler": "metro",
