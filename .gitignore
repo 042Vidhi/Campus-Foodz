@@ -22,5 +22,5 @@ expo-env.d.ts
 .env
 google-services.json
 /ios
-/andriod
+/android
 campus-foodz-firebase-adminsdk-yviqa-eb4352c24e.json
