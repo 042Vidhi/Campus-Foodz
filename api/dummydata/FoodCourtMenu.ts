@@ -11,6 +11,9 @@ export const foodCourtMenu = [
                 { name: 'Cola', price: '10' ,image:require('@/assets/images/food.jpeg') },
             ],
         },
+        photos:[
+
+        ]
     },
     {
         id: 2,
@@ -24,6 +27,9 @@ export const foodCourtMenu = [
                 { name: 'Onion Rings', price: '25' ,image:require('@/assets/images/food.jpeg') },
             ],
         },
+        photos:[
+
+        ]
     },
     {
         id: 3,
@@ -37,96 +43,8 @@ export const foodCourtMenu = [
                 { name: 'Bruschetta', price: '20' ,image:require('@/assets/images/food.jpeg') },
             ],
         },
-    },
-    {
-        id: 4,
-        items: {
-            Pizza: [
-                { name: 'Pizza Slice', price: '35' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Calzone', price: '45' ,image:require('@/assets/images/food.jpeg') },
-            ],
-            Sides: [
-                { name: 'Cheese Sticks', price: '25' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Mozzarella Sticks', price: '30' ,image:require('@/assets/images/food.jpeg') },
-            ],
-        },
-    },
-    {
-        id: 5,
-        items: {
-            Healthy: [
-                { name: 'Sandwich', price: '30' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Wrap', price: '35' ,image:require('@/assets/images/food.jpeg') },
-            ],
-            Desserts: [
-                { name: 'Cookie', price: '10' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Brownie', price: '15' ,image:require('@/assets/images/food.jpeg') },
-            ],
-        },
-    },
-    {
-        id: 6,
-        items: {
-            Mexican: [
-                { name: 'Tacos', price: '30' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Burrito', price: '35' ,image:require('@/assets/images/food.jpeg') },
-            ],
-            Drinks: [
-                { name: 'Lemonade', price: '15' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Horchata', price: '20' ,image:require('@/assets/images/food.jpeg') },
-            ],
-        },
-    },
-    {
-        id: 7,
-        items: {
-            Japanese: [
-                { name: 'Sushi Roll', price: '50' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Tempura', price: '40' ,image:require('@/assets/images/food.jpeg') },
-            ],
-            Drinks: [
-                { name: 'Green Tea', price: '15' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Sake', price: '30' ,image:require('@/assets/images/food.jpeg') },
-            ],
-        },
-    },
-    {
-        id: 8,
-        items: {
-            Indian: [
-                { name: 'Butter Chicken', price: '60' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Naan', price: '20' ,image:require('@/assets/images/food.jpeg') },
-            ],
-            Snacks: [
-                { name: 'Samosa', price: '10' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Pakora', price: '15' ,image:require('@/assets/images/food.jpeg') },
-            ],
-        },
-    },
-    {
-        id: 9,
-        items: {
-            Mediterranean: [
-                { name: 'Falafel', price: '30' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Hummus', price: '20' ,image:require('@/assets/images/food.jpeg') },
-            ],
-            Drinks: [
-                { name: 'Mint Lemonade', price: '15' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Pomegranate Juice', price: '20' ,image:require('@/assets/images/food.jpeg') },
-            ],
-        },
-    },
-    {
-        id: 10,
-        items: {
-            Desserts: [
-                { name: 'Ice Cream', price: '25' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Cake', price: '30' ,image:require('@/assets/images/food.jpeg') },
-            ],
-            Beverages: [
-                { name: 'Coffee', price: '10' ,image:require('@/assets/images/food.jpeg') },
-                { name: 'Tea', price: '10' ,image:require('@/assets/images/food.jpeg') },
-            ],
-        },
+        photos:[
+
+        ]
     },
 ];

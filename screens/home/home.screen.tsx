@@ -4,267 +4,241 @@ import {
   View,
   FlatList,
   TouchableOpacity,
-  ScrollView,
+  Image,
+  ActivityIndicator,
 } from "react-native";
 import React, { useRef, useEffect, useState } from "react";
-import { messmenu } from "@/api/dummydata/MessMenu";
-import { Ionicons } from "@expo/vector-icons";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen"
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/config/firebase";
+import {DayItem,MessMenu} from '@/types/types'
+import DisplayMenu from "@/components/DisplayMenu";
 
-export default function HomeScreen() {
+
+export default function HomeScreen(): JSX.Element {
+  const [messMenu, setMessMenu] = useState<Record<string, MessMenu>>({});
+  const [loading, setLoading] = useState<boolean>(false);
   const today = new Date();
   const year = today.getFullYear();
   const monthnames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+        "Jan",
+        "Feb",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
   ];
   const month = today.getMonth();
-
   const lastDay = new Date(year, month + 1, 0);
   const daysInMonth = lastDay.getDate();
-
+  const time = ["7:30 AM - 9:30 AM", "12:00 PM - 2:00 PM", "7:30 PM - 9:00 PM"];
   const daysArray = [];
   let todayIndex = -1;
-
-  for (let day = 1; day <= daysInMonth; day++) {
-    const date = new Date(year, month, day);
-    const isToday = date.toDateString() === today.toDateString();
-    if (isToday) todayIndex = day - 1;
-    daysArray.push({
-      day: date.getDate(),
-      date: date,
-      dayOfWeek: date.getDay(),
-      isToday: isToday,
-    });
-  }
-
-  const [selectedDate, setSelectedDate] = useState(todayIndex);
-
-  const flatListRef = useRef(null);
+    for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(year, month, day);
+        const isToday = date.toDateString() === today.toDateString();
+        if (isToday) todayIndex = day - 1;
+        daysArray.push({
+        day: date.getDate(),
+        date: date,
+        dayOfWeek: date.getDay(),
+        isToday: isToday,
+        });
+    }
+  // const { daysArray, todayIndex, today, monthnames, month, year, time } = getDateArray();
+  const [selectedDate, setSelectedDate] = useState<number>(todayIndex);
+  const flatListRef = useRef<FlatList<DayItem>>(null);
 
   useEffect(() => {
-    if (flatListRef.current && todayIndex >= 0) {
-      setTimeout(() => {
-        flatListRef.current.scrollToIndex({
-          animated: true,
-          index: todayIndex,
-        });
-      }, 500); // Delay to ensure the FlatList has rendered
-    }
-  }, [todayIndex]);
+    getMessMenu();
+  }, []);
 
-  const time = ["7:30 AM - 9:30 AM", "12:00 PM - 2:00 PM", "7:30 PM - 9:00 PM"];
-  const getMenuForSelectedDay = (dayOfWeek: number) => {
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    return messmenu[daysOfWeek[dayOfWeek]];
+  const getMenuForSelectedDay = (dayOfWeek: number): MessMenu | undefined => {
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return messMenu[daysOfWeek[dayOfWeek]];
   };
 
-  const selectedMenu = getMenuForSelectedDay(
-    daysArray[selectedDate]?.dayOfWeek
-  );
+  const selectedMenu = getMenuForSelectedDay(daysArray[selectedDate]?.dayOfWeek || 0);
+
+  const getMessMenu = async (): Promise<void> => {
+    try {
+      const messdata: Record<string, MessMenu> = {};
+      setLoading(true);
+      const snapshot = await getDocs(collection(db, "MessMenu"));
+      snapshot.forEach((document) => {
+        messdata[document.id] = document.data() as MessMenu;
+      });
+      // console.log('messdata ',messdata)
+      setMessMenu(messdata);
+      console.log('todayIndex',todayIndex)
+      if (flatListRef.current && todayIndex >= 0) {
+        flatListRef.current?.scrollToIndex({ index:todayIndex, animated: true });
+      }
+    } catch (err) {
+      console.log("Error in firebase menu fetching", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#6692FD" />
+        <Text style={styles.loadingText}>Loading...</Text>
+      </View>
+    );
+  }
+  if(!selectedMenu)
+  {
+    return(
+    <View style={styles.loadingContainer}>
+      
+        <Image source={require("@/assets/images/oops.png")} 
+          style={{ width: 100, height: 100 }}
+          resizeMode="contain"
+        />     
+      <Text style={styles.heading3}>
+        Data Not Found {'\n'} We'll get back to you
+      </Text>
+    </View>
+    )
+  }
 
   return (
     <View style={styles.container}>
-      <View style={styles.center}>
+      <View style={styles.row}>
         <Text style={styles.heading}>Mess Menu</Text>
+        <Text style={styles.heading2}>
+          Today{"\n"}
+          {today.getDate()} {monthnames[month]} {year}
+        </Text>
       </View>
-      <Text style={styles.heading2}>
-        {monthnames[month]} {year}
-      </Text>
-      <FlatList
-        ref={flatListRef}
-        horizontal={true}
-        data={daysArray}
-        keyExtractor={(item) => item.date.toISOString()}
-        renderItem={({ item, index }) => (
-          <TouchableOpacity
-            onPress={() => setSelectedDate(index)}
-            style={{ height: 100 }}
-          >
-            <View
-              style={[
-                styles.dateItem,
-                (item.isToday && selectedDate === -1) || selectedDate === index
-                  ? styles.highlighted
-                  : null,
-              ]}
+      <View>
+        <Image source={require("@/assets/images/banner.png")} style={styles.TodayImg} />
+      </View>
+      {
+        selectedMenu &&
+        (
+          <FlatList
+          ref={flatListRef}
+          horizontal={true}
+          data={daysArray}
+          extraData={selectedDate}
+          keyExtractor={(item) => item.date.toISOString()}
+          renderItem={({ item, index }: { item: DayItem; index: number }) => (
+            <TouchableOpacity
+              onPress={() => {
+                setSelectedDate(index);
+                flatListRef.current?.scrollToIndex({ index, animated: true });
+              }}
+              style={styles.datebox}
             >
-              <Text
+              <View
                 style={[
-                  styles.dateText,
-                  (item.isToday && selectedDate === -1) ||
-                  selectedDate === index
-                    ? styles.highlightedText
+                  styles.dateItem,
+                   selectedDate == index
+                    ? { backgroundColor: "#6692FD" }
                     : null,
                 ]}
               >
-                {item.day}
-              </Text>
-              <Text
-                style={[
-                  styles.dayText,
-                  (item.isToday && selectedDate === -1) ||
-                  selectedDate === index
-                    ? styles.highlightedText
-                    : null,
-                ]}
-              >
-                {
-                  ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
-                    item.dayOfWeek
-                  ]
-                }
-              </Text>
-            </View>
-          </TouchableOpacity>
+                <Text style={{ color: "#fff" }}>{item.day}</Text>
+                <Text style={{ color: "#fff" }}>{["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][item.dayOfWeek]}</Text>
+              </View>
+            </TouchableOpacity>
         )}
-      />
-      <ScrollView contentContainerStyle={styles.menuContainer}>
-        <View style={styles.menuCard}>
-          <View>
-            <Text style={styles.menuHeading}>Breakfast</Text>
-
-            <Text style={styles.menuHeading2}>
-              <Ionicons name="time" /> {time[0]}
-            </Text>
-
-            {selectedMenu?.Breakfast.map((item: any, index: any) => (
-              <Text
-                key={index}
-                style={styles.menuItem}
-              >{`\u2022 ${item}`}</Text>
-            ))}
-          </View>
-        </View>
-        <View style={styles.menuCard}>
-          <View>
-            <Text style={styles.menuHeading}>Lunch</Text>
-            <Text style={styles.menuHeading2}>
-              <Ionicons name="time" /> {time[1]}
-            </Text>
-
-            {selectedMenu?.Lunch.map((item: any, index: any) => (
-              <Text
-                key={index}
-                style={styles.menuItem}
-              >{`\u2022 ${item}`}</Text>
-            ))}
-          </View>
-        </View>
-        <View style={styles.menuCard}>
-          <View>
-            <Text style={styles.menuHeading}>Dinner</Text>
-            <Text style={styles.menuHeading2}>
-              <Ionicons name="time" /> {time[2]}
-            </Text>
-
-            {selectedMenu?.Dinner.map((item: any, index: any) => (
-              <Text
-                key={index}
-                style={styles.menuItem}
-              >{`\u2022 ${item}`}</Text>
-            ))}
-          </View>
-        </View>
-      </ScrollView>
+        />
+        )
+      }
+     
+      {
+        selectedMenu 
+        &&
+        (
+          <DisplayMenu selectedMenu={selectedMenu} daysArray={daysArray} time={time} selectedDate={selectedDate}/>
+        )
+      }
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    paddingHorizontal:10,
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#FFFBF1",
+    fontFamily:'Rubik',
+
   },
-  center: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center', 
+    marginHorizontal:20,
+    marginTop:20,
   },
-  heading: {
-    textAlign: "center",
-    borderRadius: 10,
-    marginTop: 20,
-    marginVertical: 10,
+  heading: { 
+    fontFamily: 'Rubik',
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#fff",
-    width: 150,
-    backgroundColor: "#f1592a",
+    fontWeight: '500', // Use numeric values for fontWeight in React Native
+    color: '#484848',
   },
   heading2: {
-    color: "#f1592a",
-    textAlign: "center",
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 10,
+    textAlign:'right',
+    color: '#6995FF',
+    fontSize: 13,
+    fontFamily: 'Rubik',
+    fontWeight: '600', // Use numeric values for fontWeight in React Native
+  },
+  heading3: {
+    textAlign:'center',
+    color: '#6995FF',
+    fontSize: 13,
+    fontFamily: 'Rubik',
+    fontWeight: '600', // Use numeric values for fontWeight in React Native
+  },
+  TodayImg:{
+    width:'auto',
+    marginHorizontal:20,
+    height:100,
+    marginVertical:10,
+    borderRadius:10,
+  },
+  datebox:{
+    width:60,
+    backgroundColor:'#A9ADB7',
+    borderRadius: 10,
+    marginVertical:10,
+    marginHorizontal:15,
+    overflow:'hidden',
   },
   dateItem: {
-    flexDirection: "column",
-    alignItems: "center",
-    padding: 10,
-    width: 80,
-  },
-  highlighted: {
-    backgroundColor: "#f1592a",
-  },
-  highlightedText: {
-    color: "#ffffff",
-  },
-  dateText: {
-    fontSize: 14,
-  },
-  dayText: {
-    fontSize: 14,
-  },
-  menuContainer: {
-    marginTop: 20,
-    paddingBottom: 20, // Ensure there's some padding at the bottom for better scroll experience
-  },
-  menuCard: {
-    margin: 10,
-    padding: 10,
+    height:120,
+    padding:10,
+    width:60,
     borderRadius: 10,
-    borderColor: "#f1592a",
-    borderWidth: 1,
-    backgroundColor: "#fff",
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 1 },
-    shadowRadius: 5,
-    elevation: 2,
+    flexDirection:'column',
+    alignItems:'center',
+    color:'#fff',
   },
-  menuHeading: {
+ 
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    marginTop: 10,
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#f1592a",
-    borderRadius: 10,
-    paddingLeft: 10,
-  },
-  menuHeading2: {
-    color: "#f1592a",
-    opacity: 0.68,
-    fontSize: 12,
-    fontWeight: "600",
-    paddingLeft: 10,
-  },
-  menuTime: {
-    fontSize: 12,
-    color: "grey",
-  },
-  menuItem: {
-    fontSize: 14,
-    color: "#333",
-    paddingLeft: 10,
+    color: '#6692FD',
   },
 });

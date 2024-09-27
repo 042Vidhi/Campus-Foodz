@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "campusfoodz",
+    "name": "campus foodz",
     "slug": "campusfoodz",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,16 +10,19 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#6995FF"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "dev.expo.campusfoodz"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "dev.expo.campusfoodz",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +34,17 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "097b9af4-48df-453f-8060-444b1c899ed4"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/097b9af4-48df-453f-8060-444b1c899ed4"
     }
   }
 }

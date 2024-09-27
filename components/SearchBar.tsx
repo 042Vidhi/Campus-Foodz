@@ -1,4 +1,4 @@
-// components/SearchBar.tsx
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
@@ -10,6 +10,7 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ searchQuery, setSearchQuery }) => {
   return (
     <View style={styles.container}>
+      <Ionicons name="search" size={20} color="#d1d1d1" style={styles.icon} />
       <TextInput
         style={styles.input}
         placeholder="Search Food Courts"
@@ -22,18 +23,22 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchQuery, setSearchQuery }) =>
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    backgroundColor: '#fff',
-    elevation: 2,
-    zIndex: 10, 
-  },
-  input: {
-    height: 45,
+    flexDirection: 'row',
+    alignItems: 'center',
     borderColor: '#d1d1d1',
     borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginHorizontal:10,
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    marginHorizontal: 30,
+    marginVertical: 10,
+    height: 40,
+  },
+  icon: {
+    marginRight: 8,
+  },
+  input: {
+    flex: 1,
+    fontFamily: 'Rubik',
   },
 });
 

@@ -18,3 +18,9 @@ web-build/
 
 expo-env.d.ts
 # @end expo-cli
+
+.env
+google-services.json
+/ios
+/andriod
+campus-foodz-firebase-adminsdk-yviqa-eb4352c24e.json
