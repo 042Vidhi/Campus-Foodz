@@ -20,6 +20,10 @@
       "distribution": "internal",
       "channel": "preview4"
     },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
     "production": {
       "channel": "production",
       "env": {

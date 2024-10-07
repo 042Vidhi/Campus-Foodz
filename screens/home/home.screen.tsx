@@ -21,6 +21,7 @@ import DisplayMenu from "@/components/DisplayMenu";
 export default function HomeScreen(): JSX.Element {
   const [messMenu, setMessMenu] = useState<Record<string, MessMenu>>({});
   const [loading, setLoading] = useState<boolean>(false);
+  const [error,setError] = useState<string>('');
   const today = new Date();
   const year = today.getFullYear();
   const monthnames = [
@@ -83,8 +84,11 @@ export default function HomeScreen(): JSX.Element {
       if (flatListRef.current && todayIndex >= 0) {
         flatListRef.current?.scrollToIndex({ index:todayIndex, animated: true });
       }
-    } catch (err) {
-      console.log("Error in firebase menu fetching", err);
+    } catch (err: unknown) {  
+      if (err instanceof Error) {
+        setError(err.message);
+        console.log("Error in firebase menu fetching", err);
+      }
     } finally {
       setLoading(false);
     }
@@ -110,6 +114,7 @@ export default function HomeScreen(): JSX.Element {
       <Text style={styles.heading3}>
         Data Not Found {'\n'} We'll get back to you
       </Text>
+      <Text>{error}</Text>
     </View>
     )
   }

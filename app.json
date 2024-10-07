@@ -3,6 +3,7 @@
     "name": "campus foodz",
     "slug": "campusfoodz",
     "version": "1.0.0",
+    
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -43,9 +44,10 @@
         "projectId": "097b9af4-48df-453f-8060-444b1c899ed4"
       }
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
+    // "runtimeVersion": {
+    //   "policy": "appVersion"
+    // },
+    "runtimeVersion": "1.0.0",
     "updates": {
       "url": "https://u.expo.dev/097b9af4-48df-453f-8060-444b1c899ed4"
     }
