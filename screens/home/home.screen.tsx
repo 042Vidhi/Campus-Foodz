@@ -39,25 +39,26 @@ export default function HomeScreen(): JSX.Element {
         "Dec",
   ];
   const month = today.getMonth();
-  const lastDay = new Date(year, month + 1, 0);
-  const daysInMonth = lastDay.getDate();
+  // const lastDay = new Date(year, month + 1, 0);
+  // const daysInMonth = lastDay.getDate();
   const time = ["7:30 AM - 9:30 AM", "12:00 PM - 2:00 PM", "7:30 PM - 9:00 PM"];
-  const daysArray = [];
-  let todayIndex = -1;
-    for (let day = 1; day <= daysInMonth; day++) {
-        const date = new Date(year, month, day);
-        const isToday = date.toDateString() === today.toDateString();
-        if (isToday) todayIndex = day - 1;
-        daysArray.push({
-        day: date.getDate(),
-        date: date,
-        dayOfWeek: date.getDay(),
-        isToday: isToday,
-        });
-    }
+  const daysArray = [0,1,2,3,4,5,6];
+  let todayIndex = today.getDay();
+  console.log(todayIndex)
+    // for (let day = 1; day <= daysInMonth; day++) {
+    //     const date = new Date(year, month, day);
+    //     const isToday = date.toDateString() === today.toDateString();
+    //     if (isToday) todayIndex = day - 1;
+    //     daysArray.push({
+    //     day: date.getDate(),
+    //     date: date,
+    //     dayOfWeek: date.getDay(),
+    //     isToday: isToday,
+    //     });
+    // }
   // const { daysArray, todayIndex, today, monthnames, month, year, time } = getDateArray();
-  const [selectedDate, setSelectedDate] = useState<number>(todayIndex);
-  const flatListRef = useRef<FlatList<DayItem>>(null);
+  const [selectedDay, setSelectedDay] = useState<number>(todayIndex);
+  const flatListRef = useRef<FlatList<number>>(null);
 
   useEffect(() => {
     getMessMenu();
@@ -68,7 +69,7 @@ export default function HomeScreen(): JSX.Element {
     return messMenu[daysOfWeek[dayOfWeek]];
   };
 
-  const selectedMenu = getMenuForSelectedDay(daysArray[selectedDate]?.dayOfWeek || 0);
+  const selectedMenu = getMenuForSelectedDay(daysArray[selectedDay] || 0);
 
   const getMessMenu = async (): Promise<void> => {
     try {
@@ -138,12 +139,12 @@ export default function HomeScreen(): JSX.Element {
           ref={flatListRef}
           horizontal={true}
           data={daysArray}
-          extraData={selectedDate}
-          keyExtractor={(item) => item.date.toISOString()}
-          renderItem={({ item, index }: { item: DayItem; index: number }) => (
+          extraData={selectedDay}
+          keyExtractor={(item) => item}
+          renderItem={({ item, index }: { item: number; index: number }) => (
             <TouchableOpacity
               onPress={() => {
-                setSelectedDate(index);
+                setSelectedDay(index);
                 flatListRef.current?.scrollToIndex({ index, animated: true });
               }}
               style={styles.datebox}
@@ -151,13 +152,13 @@ export default function HomeScreen(): JSX.Element {
               <View
                 style={[
                   styles.dateItem,
-                   selectedDate == index
+                   selectedDay == index
                     ? { backgroundColor: "#6692FD" }
                     : null,
                 ]}
               >
-                <Text style={{ color: "#fff" }}>{item.day}</Text>
-                <Text style={{ color: "#fff" }}>{["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][item.dayOfWeek]}</Text>
+                {/* <Text style={{ color: "#fff" }}>{item.day}</Text> */}
+                <Text style={{ color: "#fff" }}>{["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][item]}</Text>
               </View>
             </TouchableOpacity>
         )}
@@ -169,7 +170,7 @@ export default function HomeScreen(): JSX.Element {
         selectedMenu 
         &&
         (
-          <DisplayMenu selectedMenu={selectedMenu} daysArray={daysArray} time={time} selectedDate={selectedDate}/>
+          <DisplayMenu selectedMenu={selectedMenu} daysArray={daysArray} time={time} selectedDay={selectedDay}/>
         )
       }
     </View>
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
     overflow:'hidden',
   },
   dateItem: {
-    height:120,
+    height:80,
     padding:10,
     width:60,
     borderRadius: 10,

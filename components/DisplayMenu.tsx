@@ -4,11 +4,11 @@ import { ScrollView ,View ,Text, StyleSheet,} from "react-native"
 interface DisplayMenuProps {
     selectedMenu : any,
     daysArray : any,
-    selectedDate : any,
+    selectedDay : any,
     time : any,
 }
 
-const DisplayMenu = ({ selectedMenu, daysArray, selectedDate, time }:DisplayMenuProps)=>{
+const DisplayMenu = ({ selectedMenu, daysArray, selectedDay, time }:DisplayMenuProps)=>{
 
 
     return(
@@ -18,7 +18,7 @@ const DisplayMenu = ({ selectedMenu, daysArray, selectedDate, time }:DisplayMenu
             <Text style={styles.menuHeading}>Breakfast</Text>
             <Text style={styles.wrapperTextbox}>
               <Text style={styles.menuHeading2}>
-                {daysArray[selectedDate]?.dayOfWeek !== 0 ? time[0] : "8:00 AM - 10:00 AM"}
+                {daysArray[selectedDay] !== 0 ? time[0] : "8:00 AM - 10:00 AM"}
               </Text>
             </Text>
             {selectedMenu?.Breakfast?.map((item:string, index:number) => (
@@ -53,7 +53,7 @@ const DisplayMenu = ({ selectedMenu, daysArray, selectedDate, time }:DisplayMenu
 }
     const styles = StyleSheet.create({
         menuContainer: {
-            marginTop: 20,
+            marginTop: 8,
             paddingBottom: 20, // Ensure there's some padding at the bottom for better scroll experience
           },
           menuCard: {

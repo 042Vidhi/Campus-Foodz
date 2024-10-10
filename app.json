@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#6995FF"
       },
       "package": "dev.expo.campusfoodz",
       "googleServicesFile": "./google-services.json",
