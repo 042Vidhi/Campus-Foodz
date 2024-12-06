@@ -17,7 +17,9 @@
 
 ## Video Demo 🎥  
 Check out the demo of **Campus Foodz - Version 1**:  
-[![Campus Foodz Demo](assets\Screenshots\DemoV1.mp4)](\assets\Screenshots\DemoV1.mp4)  
+
+https://github.com/user-attachments/assets/3c905974-ae9b-42ce-b31f-5dd4a96a3ada
+
 
 ---
 
@@ -65,22 +67,22 @@ We are excited to announce upcoming features for **Campus Foodz - Version 2**:
 
 ## <span>📸<span/>&nbsp;&nbsp; Screenshots  
 ### Explore Mess Menu  
-<img src="assets\Screenshots\screenshot1.jpeg" alt="Screenshot 1" width="100%">  
+<img src="assets\Screenshots\screenshot1.jpeg" alt="Screenshot 1" width="50%">  
 
 ### Nearby Restaurants  
-<img src="assets\Screenshots\screenshot2.jpeg" alt="Screenshot 2" width="100%">  
+<img src="assets\Screenshots\screenshot2.jpeg" alt="Screenshot 2" width="50%">  
 
 ### Explore different outlet's menu 
-<img src="assets\Screenshots\screenshot3.jpeg" alt="Screenshot 3" width="100%">  
+<img src="assets\Screenshots\screenshot3.jpeg" alt="Screenshot 3" width="50%">  
 
 ### Explore different outlet's menu 
-<img src="assets\Screenshots\screenshot4.jpeg" alt="Screenshot 4" width="100%">  
+<img src="assets\Screenshots\screenshot4.jpeg" alt="Screenshot 4" width="50%">  
 
 ### Explore different outlet's menu 
-<img src="assets\Screenshots\screenshot5.jpeg" alt="Screenshot 5" width="100%">  
+<img src="assets\Screenshots\screenshot5.jpeg" alt="Screenshot 5" width="50%">  
 
 ### Explore different outlet's menu 
-<img src="assets\Screenshots\screenshot6.jpeg" alt="Screenshot 6" width="100%">  
+<img src="assets\Screenshots\screenshot6.jpeg" alt="Screenshot 6" width="50%">  
 
 
 
