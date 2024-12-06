@@ -7,17 +7,17 @@ import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import GlobalProvider from '@/context/GlobalProvider';
 import React from 'react';
-// import { NotificationProvider } from '@/context/NotificationContext';
-// import * as Notifications from 'expo-notifications'
+import { NotificationProvider } from '@/context/NotificationContext';
+import * as Notifications from 'expo-notifications'
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 
-// Notifications.setNotificationHandler({
-//   handleNotification: async () => ({
-//     shouldShowAlert: true,
-//     shouldPlaySound: false,
-//     shouldSetBadge: false,
-//   }),
-// });
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,7 +42,7 @@ export default function RootLayout() {
   return (
     
     <View style={{ flex: 1, paddingTop: insets.top }}>
-      {/* <NotificationProvider> */}
+      <NotificationProvider>
     <GlobalProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -60,7 +60,7 @@ export default function RootLayout() {
 
       </Stack>
   </GlobalProvider>
-  {/* </NotificationProvider> */}
+  </NotificationProvider>
     </View>
   );
 }

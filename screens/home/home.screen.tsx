@@ -129,9 +129,9 @@ export default function HomeScreen(): JSX.Element {
           {today.getDate()} {monthnames[month]} {year}
         </Text>
       </View>
-      <View>
+      {/* <View>
         <Image source={require("@/assets/images/banner.png")} style={styles.TodayImg} />
-      </View>
+      </View> */}
       {
         selectedMenu &&
         (
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center', 
     marginHorizontal:20,
-    marginTop:20,
+    marginTop:8,
   },
   heading: { 
     fontFamily: 'Rubik',
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     overflow:'hidden',
   },
   dateItem: {
-    height:80,
+    height:60,
     padding:10,
     width:60,
     borderRadius: 10,

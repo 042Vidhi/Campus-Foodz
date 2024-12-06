@@ -68,7 +68,7 @@ export default function ExploreScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Explore</Text>
+      {/* <Text style={styles.heading}>Explore</Text> */}
       {/* <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> */}
       {/* <FoodCardList data={filteredFoodCourts} /> */}
       {foodCourts && <FoodCardList data={foodCourts} />}
