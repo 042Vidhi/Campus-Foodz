@@ -3,6 +3,12 @@
 **Campus Foodz** is a one-stop solution for campus dwellers to explore mess menus and find nearby restaurants. It provides an intuitive platform to browse, compare, and plan meals, ensuring convenience and time-saving for students and staff alike.
 
 ---
+## Download for android
+<a href="https://github.com/042Vidhi/Campus-Foodz/releases/download/v1.0/CampusFoodzV1.apk" target="_blank">
+  <img src="https://img.shields.io/badge/Download-Android-green?style=for-the-badge&logo=android&logoColor=white" alt="Download for Android">
+</a>
+
+---
 
 ## <span>✅<span/>&nbsp;&nbsp; Key Features  
 - **Real-Time Mess Menus**: 🌐 Explore mess menus by weekdays.    
