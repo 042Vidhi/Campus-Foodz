@@ -72,23 +72,12 @@ We are excited to announce upcoming features for **Campus Foodz - Version 2**:
    ```  
 
 ## <span>📸<span/>&nbsp;&nbsp; Screenshots  
-### Splash Screen 
-<img src="assets\Screenshots\screenshot1.jpeg" alt="Screenshot 1" width="30%">  
 
-### Mess Menu
-<img src="assets\Screenshots\screenshot2.jpeg" alt="Screenshot 2" width="30%">  
-
-### Explore different outlets 
-<img src="assets\Screenshots\screenshot3.jpeg" alt="Screenshot 3" width="30%">  
-
-### Explore different outlet's schedule and location
-<img src="assets\Screenshots\screenshot4.jpeg" alt="Screenshot 4" width="30%">  
-
-### Explore different outlet's menu gallery
-<img src="assets\Screenshots\screenshot5.jpeg" alt="Screenshot 5" width="30%">  
-
-### Explore different outlet's menu viewing
-<img src="assets\Screenshots\screenshot6.jpeg" alt="Screenshot 6" width="30%">  
+| Splash Screen | Mess Menu | Food Outlets |
+|:-:|:-:|:-:|
+| ![Fist](assets/Screenshots/screenshot1.jpeg?raw=true) | ![3](assets/Screenshots/screenshot2.jpeg?raw=true) | ![3](assets/Screenshots/screenshot3.jpeg?raw=true) |
+| Check location & timing | Menu Gallery | Menu View |
+| ![4](assets/Screenshots/screenshot4.jpeg?raw=true) | ![5](assets/Screenshots/screenshot5.jpeg?raw=true) | ![6](assets/Screenshots/screenshot6.jpeg?raw=true) |
 
 
 
